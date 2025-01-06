@@ -1,5 +1,8 @@
 package com.codeWithSumit.FitnessTrackerService.services.activity;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.codeWithSumit.FitnessTrackerService.dto.ActivityDto;
@@ -27,4 +30,12 @@ public class ActivityServiceImpl implements ActivityService {
         return activityRepository.save(activity).getActivityDTO();
 
     }
+
+    public List<ActivityDto> getActivities(){
+         List<Activity> activities=activityRepository.findAll();
+         return activities.stream().map(Activity::getActivityDTO).collect(Collectors.toList());
+
+    }
+    
+
 }
