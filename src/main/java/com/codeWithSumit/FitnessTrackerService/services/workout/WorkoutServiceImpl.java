@@ -1,5 +1,9 @@
 package com.codeWithSumit.FitnessTrackerService.services.workout;
 
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.codeWithSumit.FitnessTrackerService.dto.WorkoutDto;
@@ -24,5 +28,11 @@ public class WorkoutServiceImpl implements WorkoutService {
         workout.setCaloriesBurned(workoutDto.getCaloriesBurned());
 
         return workoutRepository.save(workout).getWorkoutDto();
+    }
+
+    public List<WorkoutDto> getWorkot(){
+        List<Workout> workouts=workoutRepository.findAll();
+
+        return workouts.stream().map(Workout::getWorkoutDto).collect(Collectors.toList());
     }
 }
