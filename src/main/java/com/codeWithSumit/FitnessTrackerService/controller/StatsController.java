@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codeWithSumit.FitnessTrackerService.dto.GraphDto;
 import com.codeWithSumit.FitnessTrackerService.services.stats.StatsService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,19 @@ public class StatsController {
 
         return ResponseEntity.ok(statsService.getStats());
 
+    }
+
+
+    @GetMapping("/graphs")
+    public ResponseEntity<?> getGraphStats(){
+        GraphDto graphDTO = statsService.getGraphStats();
+
+        if(graphDTO != null){
+            return ResponseEntity.ok(graphDTO);
+
+        }else{
+            return ResponseEntity.status(404).body(null);
+        }
     }
 
 }
