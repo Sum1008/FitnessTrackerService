@@ -16,11 +16,11 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class GoalServiceImpl implements GoalService{
+public class GoalServiceImpl implements GoalService {
 
     private final GoalRepository goalRepository;
 
-    public GoalDto postGoal(GoalDto dto){
+    public GoalDto postGoal(GoalDto dto) {
         Goal goal = new Goal();
 
         goal.setDescription(dto.getDescription());
@@ -32,21 +32,21 @@ public class GoalServiceImpl implements GoalService{
 
     }
 
-    public List<GoalDto> getGoals(){
+    public List<GoalDto> getGoals() {
         List<Goal> goals = goalRepository.findAll();
-         return goals.stream().map(Goal::getGoalDTO).collect(Collectors.toList());
+        return goals.stream().map(Goal::getGoalDTO).collect(Collectors.toList());
     }
 
-    public GoalDto updateStatus(Long id){
-        Optional<Goal> optionalGoal =goalRepository.findById(id);
+    public GoalDto updateStatus(Long id) {
+        Optional<Goal> optionalGoal = goalRepository.findById(id);
 
-        if(optionalGoal.isPresent()){
-            Goal existingGoal =optionalGoal.get();
+        if (optionalGoal.isPresent()) {
+            Goal existingGoal = optionalGoal.get();
             existingGoal.setAchieved(true);
             return goalRepository.save(existingGoal).getGoalDTO();
         }
 
         throw new EntityNotFoundException("Goal not found");
-        
+
     }
 }

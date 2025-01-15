@@ -16,11 +16,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WorkoutServiceImpl implements WorkoutService {
 
-
     private final WorkoutRepository workoutRepository;
 
-    public WorkoutDto postWorkout(WorkoutDto workoutDto){
-        Workout workout=new Workout();
+    public WorkoutDto postWorkout(WorkoutDto workoutDto) {
+        Workout workout = new Workout();
 
         workout.setDate(workoutDto.getDate());
         workout.setType(workoutDto.getType());
@@ -30,8 +29,8 @@ public class WorkoutServiceImpl implements WorkoutService {
         return workoutRepository.save(workout).getWorkoutDto();
     }
 
-    public List<WorkoutDto> getWorkot(){
-        List<Workout> workouts=workoutRepository.findAll();
+    public List<WorkoutDto> getWorkot() {
+        List<Workout> workouts = workoutRepository.findAll();
 
         return workouts.stream().map(Workout::getWorkoutDto).collect(Collectors.toList());
     }

@@ -14,11 +14,10 @@ import lombok.Data;
 @Data
 public class Goal {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
-    
+    private Long id;
+
     private String description;
 
     private Date startDate;
@@ -27,9 +26,8 @@ public class Goal {
 
     private boolean achieved;
 
-
-    public GoalDto getGoalDTO(){
-        GoalDto goalDto=new GoalDto();
+    public GoalDto getGoalDTO() {
+        GoalDto goalDto = new GoalDto();
         goalDto.setId(id);
         goalDto.setDescription(description);
         goalDto.setStartDate(startDate);

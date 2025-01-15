@@ -20,27 +20,25 @@ import lombok.RequiredArgsConstructor;
 @CrossOrigin("*")
 public class WorkoutController {
 
-
     public final WorkoutService workoutService;
 
-
     @PostMapping("/workout")
-    public ResponseEntity<?> postWorkout(@RequestBody WorkoutDto workoutDto){
-        try{
+    public ResponseEntity<?> postWorkout(@RequestBody WorkoutDto workoutDto) {
+        try {
             return ResponseEntity.ok(workoutService.postWorkout(workoutDto));
-        }catch(Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("some thing went wrong");
         }
     }
 
-
     @GetMapping("/workouts")
-    public ResponseEntity<?> getWorkouts(){
-        try{
+    public ResponseEntity<?> getWorkouts() {
+        try {
             return ResponseEntity.ok(workoutService.getWorkot());
-        }catch(Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("sOME THING WENT WRONG");
 
         }
     }
+
 }

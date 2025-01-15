@@ -1,6 +1,5 @@
 package com.codeWithSumit.FitnessTrackerService.controller;
 
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,21 +20,19 @@ public class StatsController {
     private final StatsService statsService;
 
     @GetMapping("/stats")
-    public ResponseEntity<?> getStats(){
-
+    public ResponseEntity<?> getStats() {
         return ResponseEntity.ok(statsService.getStats());
-
     }
 
-
     @GetMapping("/graphs")
-    public ResponseEntity<?> getGraphStats(){
+    public ResponseEntity<?> getGraphStats() {
+
         GraphDto graphDTO = statsService.getGraphStats();
 
-        if(graphDTO != null){
+        if (graphDTO != null) {
             return ResponseEntity.ok(graphDTO);
 
-        }else{
+        } else {
             return ResponseEntity.status(404).body(null);
         }
     }

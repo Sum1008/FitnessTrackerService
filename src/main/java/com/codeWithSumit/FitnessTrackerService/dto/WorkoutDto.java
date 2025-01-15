@@ -7,9 +7,8 @@ import lombok.Data;
 @Data
 public class WorkoutDto {
 
-
     private Long id;
-    
+
     private String type;
 
     private Date date;

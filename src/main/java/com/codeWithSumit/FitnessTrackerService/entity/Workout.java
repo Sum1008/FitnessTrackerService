@@ -17,7 +17,7 @@ public class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String type;
 
     private Date date;
@@ -26,9 +26,9 @@ public class Workout {
 
     private int caloriesBurned;
 
-    public WorkoutDto getWorkoutDto(){
+    public WorkoutDto getWorkoutDto() {
 
-        WorkoutDto workoutDto =new WorkoutDto();
+        WorkoutDto workoutDto = new WorkoutDto();
 
         workoutDto.setId(id);
         workoutDto.setType(type);

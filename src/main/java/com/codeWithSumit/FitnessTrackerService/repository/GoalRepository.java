@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 import com.codeWithSumit.FitnessTrackerService.entity.Goal;
 
 @Repository
-public interface GoalRepository extends JpaRepository<Goal,Long> {
+public interface GoalRepository extends JpaRepository<Goal, Long> {
 
     @Query("SELECT COUNT(g) FROM Goal g WHERE g.achieved =true")
     Long countAchievedGoals();
 
     @Query("SELECT COUNT(g) FROM Goal g WHERE g.achieved=false")
     Long countNotAchievedGoals();
-    
+
 }

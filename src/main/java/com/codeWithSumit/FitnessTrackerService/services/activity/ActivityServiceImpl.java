@@ -11,14 +11,13 @@ import com.codeWithSumit.FitnessTrackerService.repository.ActivityRepository;
 
 import lombok.RequiredArgsConstructor;
 
-
 @Service
 @RequiredArgsConstructor
 public class ActivityServiceImpl implements ActivityService {
 
     private final ActivityRepository activityRepository;
 
-    public ActivityDto postActivity(ActivityDto dto){
+    public ActivityDto postActivity(ActivityDto dto) {
 
         Activity activity = new Activity();
 
@@ -31,11 +30,10 @@ public class ActivityServiceImpl implements ActivityService {
 
     }
 
-    public List<ActivityDto> getActivities(){
-         List<Activity> activities=activityRepository.findAll();
-         return activities.stream().map(Activity::getActivityDTO).collect(Collectors.toList());
+    public List<ActivityDto> getActivities() {
+        List<Activity> activities = activityRepository.findAll();
+        return activities.stream().map(Activity::getActivityDTO).collect(Collectors.toList());
 
     }
-    
 
 }
